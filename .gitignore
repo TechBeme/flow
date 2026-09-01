@@ -10,8 +10,11 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# testing and local reports
 /coverage
+/test-results
+/playwright-report
+/.nyc_output
 
 # next.js
 /.next/
@@ -20,9 +23,17 @@
 # production
 /build
 
-# misc
+# local tools and editor files
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
 *.pem
+*.key
+*.p12
+*.pfx
 
 # debug
 npm-debug.log*
@@ -30,8 +41,28 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# environment files (the public template is intentionally tracked)
 .env*
+!.env.example
+
+# credentials and local data
+*service-account*.json
+*service_account*.json
+sa-key*.json
+/credentials.json
+/google-credentials.json
+/vertex.json
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+
+# generated media and temporary captures
+/generated/
+/screenshots/
+/tmp/
+*.webm
+*.mp4
 
 # vercel
 .vercel

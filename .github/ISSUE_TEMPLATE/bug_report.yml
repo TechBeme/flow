@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a reproducible problem in Flow
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Flow. Remove credentials, project IDs, and private media before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Flow version or commit
+      placeholder: e.g. main at abc1234
+    validations:
+      required: true
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Deployment
+      options:
+        - Local development
+        - Vercel
+        - Container or VM
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the actual result and the result you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open...
+        2. Select...
+        3. Submit...
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model and output settings
+      description: Include the display model name, duration/size, resolution, and aspect ratio when relevant.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs or screenshots
+      description: Never include service-account JSON, tokens, database URLs, private project IDs, or sensitive media.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues for this problem.
+          required: true
+        - label: I removed secrets and private data from this report.
+          required: true

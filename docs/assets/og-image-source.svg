@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070707"/>
+      <stop offset="0.58" stop-color="#11100c"/>
+      <stop offset="1" stop-color="#1f1805"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.3" r="0.65">
+      <stop offset="0" stop-color="#f4c430" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#f4c430" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2926"/>
+      <stop offset="1" stop-color="#161615"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <path d="M0 548 C260 480 420 604 690 532 C920 471 1035 480 1200 421 L1200 630 L0 630 Z" fill="#f4c430" opacity="0.045"/>
+  <circle cx="1114" cy="78" r="210" fill="none" stroke="#f4c430" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="1114" cy="78" r="144" fill="none" stroke="#f4c430" stroke-opacity="0.1" stroke-width="1"/>
+
+  <g font-family="DejaVu Sans, sans-serif">
+    <rect x="72" y="66" width="138" height="38" rx="19" fill="#f4c430"/>
+    <text x="141" y="92" text-anchor="middle" font-size="17" font-weight="700" letter-spacing="4" fill="#111">FLOW</text>
+
+    <text x="72" y="205" font-size="72" font-weight="700" fill="#fff">Create images.</text>
+    <text x="72" y="287" font-size="72" font-weight="700" fill="#fff">Direct videos.</text>
+    <text x="72" y="351" font-size="26" font-weight="400" fill="#aaa69c">One open-source workspace powered by Vertex AI.</text>
+
+    <g font-size="17" font-weight="600">
+      <rect x="72" y="405" width="174" height="47" rx="23.5" fill="#1c1c1c" stroke="#353535"/>
+      <text x="159" y="435" text-anchor="middle" fill="#f3f1eb">Nano Banana</text>
+      <rect x="260" y="405" width="102" height="47" rx="23.5" fill="#1c1c1c" stroke="#353535"/>
+      <text x="311" y="435" text-anchor="middle" fill="#f3f1eb">Omni</text>
+      <rect x="376" y="405" width="92" height="47" rx="23.5" fill="#1c1c1c" stroke="#353535"/>
+      <text x="422" y="435" text-anchor="middle" fill="#f3f1eb">Veo</text>
+    </g>
+
+    <text x="72" y="542" font-size="18" font-weight="700" fill="#17130a">flow.techbe.me</text>
+    <text x="72" y="574" font-size="15" fill="#4f421d">github.com/TechBeme/flow</text>
+  </g>
+
+  <g transform="translate(755 105)" filter="url(#shadow)">
+    <rect width="363" height="432" rx="30" fill="#0d0d0d" stroke="#fff" stroke-opacity="0.1"/>
+    <rect x="22" y="22" width="319" height="58" rx="18" fill="#181817"/>
+    <rect x="29" y="29" width="150" height="44" rx="14" fill="#3b3a37"/>
+    <circle cx="54" cy="51" r="6" fill="#f4c430"/>
+    <rect x="70" y="46" width="71" height="10" rx="5" fill="#fff" fill-opacity="0.82"/>
+    <circle cx="214" cy="51" r="6" fill="#fff" fill-opacity="0.35"/>
+    <rect x="230" y="46" width="58" height="10" rx="5" fill="#fff" fill-opacity="0.32"/>
+
+    <rect x="22" y="94" width="319" height="158" rx="20" fill="url(#panel)"/>
+    <rect x="39" y="112" width="78" height="22" rx="11" fill="#fff" fill-opacity="0.1"/>
+    <rect x="128" y="112" width="56" height="22" rx="11" fill="#fff" fill-opacity="0.06"/>
+    <rect x="195" y="112" width="56" height="22" rx="11" fill="#fff" fill-opacity="0.06"/>
+    <g fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="2">
+      <rect x="43" y="158" width="28" height="28" rx="5"/>
+      <rect x="85" y="153" width="23" height="33" rx="5"/>
+      <rect x="122" y="164" width="38" height="17" rx="5"/>
+      <rect x="174" y="157" width="28" height="28" rx="5"/>
+      <rect x="216" y="164" width="38" height="17" rx="5"/>
+      <rect x="268" y="153" width="23" height="33" rx="5"/>
+    </g>
+    <rect x="39" y="207" width="88" height="26" rx="13" fill="#f4c430" fill-opacity="0.92"/>
+    <rect x="138" y="207" width="70" height="26" rx="13" fill="#fff" fill-opacity="0.08"/>
+    <rect x="219" y="207" width="74" height="26" rx="13" fill="#fff" fill-opacity="0.08"/>
+
+    <rect x="22" y="266" width="319" height="144" rx="22" fill="#181817"/>
+    <rect x="42" y="288" width="248" height="12" rx="6" fill="#fff" fill-opacity="0.34"/>
+    <rect x="42" y="311" width="190" height="10" rx="5" fill="#fff" fill-opacity="0.15"/>
+    <rect x="42" y="357" width="158" height="33" rx="16.5" fill="#2d2b23"/>
+    <circle cx="58" cy="373.5" r="6" fill="#f4c430"/>
+    <rect x="71" y="369" width="106" height="9" rx="4.5" fill="#fff" fill-opacity="0.63"/>
+    <circle cx="309" cy="373" r="18" fill="#f4c430"/>
+    <path d="M302 373 H315 M310 367 L316 373 L310 379" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
