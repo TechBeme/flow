@@ -7,18 +7,30 @@
 
   Turn prompts and reference images into visual stories with Nano Banana, Omni, and Veo from one focused, cinematic interface.
 
-  [![Demo](https://img.shields.io/badge/demo-flow.techbe.me-111111?style=for-the-badge)](https://flow.techbe.me)
-  [![GitHub stars](https://img.shields.io/github/stars/TechBeme/flow?style=for-the-badge&logo=github&color=F4C430)](https://github.com/TechBeme/flow/stargazers)
-  [![CI](https://img.shields.io/github/actions/workflow/status/TechBeme/flow/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/TechBeme/flow/actions/workflows/ci.yml)
-  [![MIT License](https://img.shields.io/badge/license-MIT-2ea44f?style=for-the-badge)](LICENSE)
+  <p>
+    <a href="https://flow.techbe.me"><strong>Live Demo</strong></a>
+    |
+    <a href="#quick-start">Quick Start</a>
+    |
+    <a href="#supported-models">Providers</a>
+    |
+    <a href="CONTRIBUTING.md">Contribute</a>
+  </p>
 
-  **Languages:** English · [🇧🇷 Português](README.pt-BR.md) · [🇪🇸 Español](README.es.md)
+  <p>
+    <a href="https://github.com/TechBeme/flow/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/TechBeme/flow/actions/workflows/ci.yml/badge.svg" /></a>
+    <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-d5ff47" /></a>
+    <a href="https://nextjs.org"><img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" /></a>
+    <a href="https://www.typescriptlang.org"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white" /></a>
+    <a href="https://github.com/TechBeme/flow/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/TechBeme/flow?style=social" /></a>
+  </p>
 
-  [Documentation](docs/GETTING-STARTED.md) · [Report a bug](https://github.com/TechBeme/flow/issues/new?template=bug_report.yml) · [Request a feature](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml)
+  <p>
+    <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTechBeme%2Fflow&amp;env=DATABASE_URL%2CGOOGLE_SERVICE_ACCOUNT_JSON&amp;envDescription=PostgreSQL%20connection%20and%20Google%20service-account%20JSON%20for%20generation&amp;envLink=https%3A%2F%2Fgithub.com%2FTechBeme%2Fflow%2Fblob%2Fmain%2Fdocs%2FCONFIGURATION.md"><img alt="Deploy with Vercel" src="https://vercel.com/button" /></a>
+  </p>
+
+  **Languages:** 🇺🇸 English · [🇧🇷 Português](README.pt-BR.md) · [🇪🇸 Español](README.es.md)
 </div>
-
-> [!IMPORTANT]
-> The public demo is live at [flow.techbe.me](https://flow.techbe.me). It is available for exploring the interface, projects, model controls, media management, and language support. Image and video generation are disabled on the hosted demo because provider credentials are not configured. Public demo projects are shared, so do not upload private or sensitive content. To enable generation, deploy Flow with your own API credentials using the guide below.
 
 ![Flow generation workspace showing model, aspect ratio, duration, resolution, and prompt controls](docs/images/generation-controls.png)
 
