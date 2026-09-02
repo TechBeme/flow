@@ -6,7 +6,7 @@ import { Pencil, Trash2 } from "lucide-react"
 import { motion } from "motion/react"
 import type { Project } from "@/lib/types"
 import { useFlowStore } from "@/lib/store"
-import { t } from "@/lib/i18n"
+import { useI18n } from "@/lib/i18n"
 import {
     Tooltip,
     TooltipContent,
@@ -28,6 +28,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+    const { t } = useI18n()
     const [isHovered, setIsHovered] = useState(false)
     const [showDeleteDialog, setShowDeleteDialog] = useState(false)
     const [showRenameDialog, setShowRenameDialog] = useState(false)

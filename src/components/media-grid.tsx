@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react"
 import type { MediaItem } from "@/lib/types"
 import { MediaTile } from "./media-tile"
 import { Lightbox } from "./lightbox"
+import { useI18n } from "@/lib/i18n"
 
 interface MediaGridProps {
     items: MediaItem[]
@@ -72,6 +73,7 @@ async function dataUrlFromDrop(e: React.DragEvent): Promise<string | null> {
 }
 
 export function MediaGrid({ items, onReusePrompt, onDelete, gridSize = 140, onDropImage }: MediaGridProps) {
+    const { t } = useI18n()
     const [isDragOver, setIsDragOver] = useState(false)
     const dragCounterRef = useRef(0)
 
@@ -134,7 +136,7 @@ export function MediaGrid({ items, onReusePrompt, onDelete, gridSize = 140, onDr
                 {...dropProps}
             >
                 <p className="text-white/30 text-sm pointer-events-none">
-                    {isDragOver ? "Solte a imagem aqui" : "Nenhuma mídia ainda. Clique em + para criar."}
+                    {isDragOver ? t("generation.dropImage") : t("media.empty")}
                 </p>
             </div>
         )

@@ -75,6 +75,7 @@ No Veo, saídas acima de 720p usam duração de 8 segundos. Vídeos suportam `16
 - Projetos com nome, miniatura e galeria persistente
 - Preview, zoom, download, exclusão e reutilização de prompt
 - Interface criativa focada em desktop
+- Interface em inglês, português e espanhol, com detecção do navegador e seletor persistente
 - Integração direta com Vertex AI, sem chave do Google AI Studio
 
 ## Stack

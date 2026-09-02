@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback, useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Download, RotateCcw } from "lucide-react"
 import type { MediaItem } from "@/lib/types"
+import { useI18n } from "@/lib/i18n"
 
 interface LightboxProps {
     items: MediaItem[]       // only "done" items
@@ -18,6 +19,7 @@ const MAX_SCALE = 8
 const ZOOM_STEP = 0.4
 
 export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: LightboxProps) {
+    const { t } = useI18n()
     const item = items[index]
     const [scale, setScale] = useState(1)
     const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -107,6 +109,7 @@ export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: L
                             <>
                                 <button
                                     onClick={() => setScale(s => Math.max(MIN_SCALE, s - ZOOM_STEP))}
+                                    aria-label={t("lightbox.zoomOut")}
                                     className="flex items-center justify-center w-8 h-8 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
                                 >
                                     <ZoomOut className="w-4 h-4" />
@@ -114,19 +117,21 @@ export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: L
                                 <span className="text-xs text-white/40 w-10 text-center tabular-nums">{Math.round(scale * 100)}%</span>
                                 <button
                                     onClick={() => setScale(s => Math.min(MAX_SCALE, s + ZOOM_STEP))}
+                                    aria-label={t("lightbox.zoomIn")}
                                     className="flex items-center justify-center w-8 h-8 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
                                 >
                                     <ZoomIn className="w-4 h-4" />
                                 </button>
                                 <button
                                     onClick={() => { setScale(1); setOffset({ x: 0, y: 0 }) }}
+                                    aria-label={t("lightbox.resetZoom")}
                                     className="text-xs text-white/40 hover:text-white/70 px-2 h-8 rounded-full hover:bg-white/10 transition-colors"
                                 >
-                                    Reset
+                                    {t("lightbox.resetZoom")}
                                 </button>
                             </>
                         ) : (
-                            <span className="text-xs text-white/40">Video</span>
+                            <span className="text-xs text-white/40">{t("lightbox.video")}</span>
                         )}
                     </div>
 
@@ -136,21 +141,24 @@ export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: L
                         {item.prompt && onReusePrompt && (
                             <button
                                 onClick={() => { onReusePrompt(item.prompt!, item.referenceImage); onClose() }}
+                                aria-label={t("project.reusePrompt")}
                                 className="flex items-center gap-1.5 h-8 px-3 rounded-full text-xs text-white/60 hover:text-white hover:bg-white/10 transition-colors"
                             >
                                 <RotateCcw className="w-3.5 h-3.5" />
-                                Reutilizar prompt
+                                {t("project.reusePrompt")}
                             </button>
                         )}
                         <a
                             href={url}
                             download={item.type === "video" ? `video-${item.id}.mp4` : `image-${item.id}.png`}
+                            aria-label={t("media.download")}
                             className="flex items-center justify-center w-8 h-8 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
                         >
                             <Download className="w-4 h-4" />
                         </a>
                         <button
                             onClick={onClose}
+                            aria-label={t("lightbox.close")}
                             className="flex items-center justify-center w-8 h-8 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
                         >
                             <X className="w-5 h-5" />
@@ -207,6 +215,7 @@ export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: L
                     {hasPrev && (
                         <button
                             onClick={() => navigate(-1)}
+                            aria-label={t("lightbox.previous")}
                             className="absolute left-3 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 text-white/70 hover:text-white transition-colors backdrop-blur-sm"
                         >
                             <ChevronLeft className="w-5 h-5" />
@@ -215,6 +224,7 @@ export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: L
                     {hasNext && (
                         <button
                             onClick={() => navigate(1)}
+                            aria-label={t("lightbox.next")}
                             className="absolute right-3 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 hover:bg-black/80 text-white/70 hover:text-white transition-colors backdrop-blur-sm"
                         >
                             <ChevronRight className="w-5 h-5" />
@@ -236,6 +246,7 @@ export function Lightbox({ items, index, onClose, onNavigate, onReusePrompt }: L
                             <button
                                 key={it.id}
                                 onClick={() => navigateTo(i)}
+                                aria-label={t("lightbox.item", { current: i + 1, total: items.length })}
                                 className="shrink-0 rounded-md overflow-hidden transition-all duration-150"
                                 style={{
                                     width: 48,

@@ -78,7 +78,7 @@ For Veo, outputs above 720p use an 8-second duration because that is the constra
 - Persistent PostgreSQL media and project library
 - Desktop-first creative interface
 - Media preview, zoom, download, delete, and prompt reuse
-- Portuguese product interface with English-first project documentation
+- Browser-aware interface in English, Portuguese, and Spanish with a persistent language selector
 - Direct Vertex AI authentication, with no Google AI Studio API key required
 
 ## Tech stack

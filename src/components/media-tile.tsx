@@ -4,8 +4,9 @@ import { useState, useCallback, useRef } from "react"
 import { motion } from "motion/react"
 import { RotateCcw, AlertCircle, Trash2, Download, Play } from "lucide-react"
 import type { MediaItem } from "@/lib/types"
-import { t } from "@/lib/i18n"
+import { useI18n } from "@/lib/i18n"
 import { useFlowStore } from "@/lib/store"
+import { getGenerationErrorKey } from "@/lib/generation-errors"
 import {
     Tooltip,
     TooltipContent,
@@ -21,12 +22,16 @@ interface MediaTileProps {
 }
 
 export function MediaTile({ item, onReusePrompt, onDelete, onClick, tileHeight = 140 }: MediaTileProps) {
+    const { t } = useI18n()
     const [isDragging, setIsDragging] = useState(false)
     const setDraggingUrl = useFlowStore((s) => s.setDraggingUrl)
     const imgRef = useRef<HTMLImageElement>(null)
 
     // Convert "9:16" → "9/16" for CSS aspect-ratio (used only for generating placeholder)
     const cssAspectRatio = item.aspectRatio?.replace(":", "/") || "9/16"
+    const generationError = item.generationError
+        ? t(getGenerationErrorKey(item.generationError))
+        : t("media.generationError")
 
     const isDraggable = item.type === "image" && item.status === "done" && !!(item.url || item.thumbnail)
 
@@ -71,6 +76,7 @@ export function MediaTile({ item, onReusePrompt, onDelete, onClick, tileHeight =
         >
             <div
                 role="button"
+                aria-label={t("media.open")}
                 className="w-full h-full cursor-pointer"
                 draggable={isDraggable}
                 onDragStart={isDraggable ? handleDragStart : undefined}
@@ -92,9 +98,9 @@ export function MediaTile({ item, onReusePrompt, onDelete, onClick, tileHeight =
                             <AlertCircle className="w-8 h-8 text-red-400/60" />
                             <span
                                 className="text-xs leading-tight text-center text-red-400/70 break-words"
-                                title={item.generationError ?? "Erro ao gerar"}
+                                title={generationError}
                             >
-                                {item.generationError ?? "Erro ao gerar"}
+                                {generationError}
                             </span>
                         </div>
                     </div>
@@ -133,6 +139,7 @@ export function MediaTile({ item, onReusePrompt, onDelete, onClick, tileHeight =
                     {onDelete && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onDelete(item.id) }}
+                            aria-label={t("media.delete")}
                             className="pointer-events-auto absolute top-2 right-2 flex items-center justify-center w-7 h-7 rounded-full bg-black/50 hover:bg-red-500/70 text-white/70 hover:text-white transition-colors backdrop-blur-sm"
                         >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -164,12 +171,13 @@ export function MediaTile({ item, onReusePrompt, onDelete, onClick, tileHeight =
                                         href={item.url || item.thumbnail}
                                         download={item.type === "video" ? `video-${item.id}.mp4` : `image-${item.id}.png`}
                                         onClick={(e) => e.stopPropagation()}
+                                        aria-label={t("media.download")}
                                         className="pointer-events-auto flex items-center justify-center w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/70 transition-colors"
                                     >
                                         <Download className="w-3.5 h-3.5" />
                                     </a>
                                 </TooltipTrigger>
-                                <TooltipContent>Baixar</TooltipContent>
+                                <TooltipContent>{t("media.download")}</TooltipContent>
                             </Tooltip>
                         </div>
                     )}

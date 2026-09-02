@@ -78,7 +78,7 @@ En Veo, las salidas superiores a 720p utilizan una duración de 8 segundos, de a
 - Biblioteca persistente de proyectos y medios en PostgreSQL
 - Interfaz creativa enfocada en escritorio
 - Vista previa, zoom, descarga, eliminación y reutilización de prompts
-- Interfaz de producto en portugués y documentación en tres idiomas
+- Interfaz en inglés, portugués y español, con detección del navegador y selector persistente
 - Autenticación directa con la Vertex AI API, sin clave de Google AI Studio
 
 ## Tecnologías

@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Plus, ArrowRight, X, ChevronDown, ImagePlus, Minus } from "lucide-react"
-import { t } from "@/lib/i18n"
+import { useI18n } from "@/lib/i18n"
 import { useFlowStore } from "@/lib/store"
 import type {
     AspectRatio,
@@ -131,6 +131,7 @@ export function GenerationPanel({
     reuseData,
     onAttachReference,
 }: GenerationPanelProps) {
+    const { t } = useI18n()
     const [prompt, setPrompt] = useState("")
     const [imageModel, setImageModel] = useState(IMAGE_MODELS[0])
     const [videoModel, setVideoModel] = useState(VIDEO_MODELS[0])
@@ -392,14 +393,14 @@ export function GenerationPanel({
                                             onClick={() => selectMediaType("image")}
                                         >
                                             <TabIcon name="image" />
-                                            Imagem
+                                            {t("generation.image")}
                                         </TabButton>
                                         <TabButton
                                             active={mediaType === "video"}
                                             onClick={() => selectMediaType("video")}
                                         >
                                             <TabIcon name="video" />
-                                            Vídeo
+                                            {t("generation.video")}
                                         </TabButton>
                                     </TabGroup>
 
@@ -418,7 +419,7 @@ export function GenerationPanel({
                                                     }`}
                                             >
                                                 <AspectRatioIcon ratio="auto" />
-                                                Auto
+                                                {t("generation.auto")}
                                             </button>
                                         )}
                                         <div className={`grid gap-1 ${mediaType === "video" ? "grid-cols-2" : "grid-cols-7"}`}>
@@ -460,6 +461,7 @@ export function GenerationPanel({
                                         <button
                                             onClick={() => setCount(Math.max(1, count - 1))}
                                             disabled={count <= 1}
+                                            aria-label={t("generation.decreaseCount")}
                                             className="flex items-center justify-center h-[2rem] w-[2rem] rounded-lg text-white text-[0.75rem] font-semibold transition-all duration-200 hover:bg-white/15 disabled:opacity-40 disabled:cursor-not-allowed hover:disabled:bg-transparent"
                                         >
                                             <Minus className="w-3.5 h-3.5" />
@@ -487,6 +489,7 @@ export function GenerationPanel({
                                         <button
                                             onClick={() => setCount(Math.min(100, count + 1))}
                                             disabled={count >= 100}
+                                            aria-label={t("generation.increaseCount")}
                                             className="flex items-center justify-center h-[2rem] w-[2rem] rounded-lg text-white text-[0.75rem] font-semibold transition-all duration-200 hover:bg-white/15 disabled:opacity-40 disabled:cursor-not-allowed hover:disabled:bg-transparent"
                                         >
                                             <Plus className="w-3.5 h-3.5" />
@@ -535,13 +538,13 @@ export function GenerationPanel({
                                                 active={thinkingLevel === "minimal"}
                                                 onClick={() => setThinkingLevel("minimal")}
                                             >
-                                                Rápido
+                                                {t("generation.fast")}
                                             </TabButton>
                                             <TabButton
                                                 active={thinkingLevel === "high"}
                                                 onClick={() => setThinkingLevel("high")}
                                             >
-                                                Preciso
+                                                {t("generation.precise")}
                                             </TabButton>
                                         </TabGroup>
                                     )}
@@ -550,6 +553,7 @@ export function GenerationPanel({
                                     <div className="relative">
                                         <button
                                             onClick={() => setModelDropdownOpen(!modelDropdownOpen)}
+                                            aria-label={t("generation.model")}
                                             className="w-full flex items-center justify-between h-[2.125rem] px-4 rounded-xl text-white text-[0.75rem] font-medium transition-colors"
                                             style={{ background: "rgba(218, 220, 224, 0.05)" }}
                                         >
@@ -626,7 +630,7 @@ export function GenerationPanel({
                                             className="rounded-xl object-cover shadow-lg"
                                             style={{ width: 52, height: 52 }}
                                         />
-                                        <span className="text-sm font-medium text-white/80">Solte para usar como referência</span>
+                                        <span className="text-sm font-medium text-white/80">{t("generation.dropReference")}</span>
                                     </motion.div>
                                 )}
                                 {isDragOver && !draggingUrl && (
@@ -640,7 +644,7 @@ export function GenerationPanel({
                                         style={{ background: "rgba(22,23,24,0.85)" }}
                                     >
                                         <ImagePlus className="w-5 h-5 text-white/60 mr-2" />
-                                        <span className="text-sm font-medium text-white/80">Solte a imagem aqui</span>
+                                        <span className="text-sm font-medium text-white/80">{t("generation.dropImage")}</span>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -658,6 +662,7 @@ export function GenerationPanel({
                                             <img src={img} alt="" className="w-full h-full object-cover" />
                                             <button
                                                 onClick={() => setReferenceImages(prev => prev.filter((_, j) => j !== i))}
+                                                aria-label={t("generation.removeReference")}
                                                 className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity"
                                             >
                                                 <X className="w-4 h-4 text-white" />
@@ -684,6 +689,7 @@ export function GenerationPanel({
                             {prompt.length > 0 && (
                                 <button
                                     onClick={() => setPrompt("")}
+                                    aria-label={t("generation.clearPrompt")}
                                     className="absolute top-3 right-3 flex items-center justify-center w-7 h-7 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors"
                                 >
                                     <X className="w-4 h-4" />
@@ -694,7 +700,7 @@ export function GenerationPanel({
                             <div className="flex items-center justify-between w-full px-2 pb-2">
                                 {/* Left: attach image button + create button */}
                                 <div className="flex items-center gap-1">
-                                    <label className="flex items-center justify-center w-8 h-8 rounded-full text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors cursor-pointer" title="Anexar imagem">
+                                    <label className="flex items-center justify-center w-8 h-8 rounded-full text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors cursor-pointer" title={t("generation.attachImage")}>
                                         <Plus className="w-[1.35rem] h-[1.35rem]" />
                                         <input
                                             type="file"
@@ -719,12 +725,13 @@ export function GenerationPanel({
                                             setSettingsOpen(!settingsOpen)
                                             setModelDropdownOpen(false)
                                         }}
+                                        aria-label={t("generation.settings")}
                                         className="flex items-center gap-1 text-[0.75rem] font-medium text-[rgba(218,220,224,0.75)] px-3 h-[1.875rem] rounded-[15px] hover:bg-white/5 transition-colors"
                                         style={{ border: "1px solid rgba(255,255,255,0.15)" }}
                                     >
                                         <span>{model.emoji} {model.name}</span>
                                         {aspectRatio === "auto"
-                                            ? <span>Auto</span>
+                                            ? <span>{t("generation.auto")}</span>
                                             : <><AspectRatioIcon ratio={aspectRatio} /><span>{aspectRatio}</span></>
                                         }
                                         {mediaType === "image" ? (
@@ -744,6 +751,7 @@ export function GenerationPanel({
                                     <button
                                         onClick={handleCreate}
                                         disabled={!prompt.trim()}
+                                        aria-label={t("generation.submit")}
                                         className="flex items-center justify-center h-8 w-8 rounded-full text-sm font-medium transition-colors disabled:opacity-30"
                                         style={{
                                             background: prompt.trim() ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.15)",

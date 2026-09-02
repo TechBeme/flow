@@ -194,7 +194,7 @@ export async function POST(request: NextRequest) {
                 }
 
                 console.log(`[generate] Image blocked/skipped: ${reason ?? "unknown"}`)
-                return { error: userMessage, blocked: true, reason }
+                return { error: userMessage, blocked: true, reason: reason ?? "EMPTY_RESPONSE" }
             }
 
             return {

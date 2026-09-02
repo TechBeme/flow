@@ -15,8 +15,9 @@ import {
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { AnimatePresence, motion } from "motion/react"
-import { t } from "@/lib/i18n"
+import { useI18n } from "@/lib/i18n"
 import { useFlowStore } from "@/lib/store"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import {
     Tooltip,
     TooltipContent,
@@ -36,6 +37,7 @@ export function ProjectNav({
     gridSize,
     onGridSizeChange,
 }: ProjectNavProps) {
+    const { t } = useI18n()
     const router = useRouter()
     const [editingName, setEditingName] = useState(false)
     const [name, setName] = useState(projectName)
@@ -88,6 +90,7 @@ export function ProjectNav({
                             <TooltipTrigger asChild>
                                 <button
                                     onClick={() => router.push("/")}
+                                    aria-label={t("nav.goBack")}
                                     className="flex items-center justify-center w-8 h-8 rounded-full text-white hover:bg-white/5 active:bg-white/25 transition-colors"
                                 >
                                     <ArrowLeft className="w-6 h-6" />
@@ -111,12 +114,14 @@ export function ProjectNav({
                                     />
                                     <button
                                         onClick={handleNameChange}
+                                        aria-label={t("project.saveName")}
                                         className="flex items-center justify-center w-8 h-8 rounded-full text-white hover:bg-white/5 active:bg-white/25 transition-colors"
                                     >
                                         <Check className="w-5 h-5" />
                                     </button>
                                     <button
                                         onClick={handleCancelName}
+                                        aria-label={t("project.cancelRename")}
                                         className="flex items-center justify-center w-8 h-8 rounded-full text-white hover:bg-white/5 active:bg-white/25 transition-colors"
                                     >
                                         <X className="w-5 h-5" />
@@ -143,6 +148,7 @@ export function ProjectNav({
                                         <button
                                             onClick={() => setMenuOpen(!menuOpen)}
                                             ref={menuBtnRef}
+                                            aria-label={t("nav.moreOptions")}
                                             className="flex items-center justify-center w-8 h-8 rounded-full text-white/50 hover:bg-white/5 active:bg-white/25 transition-colors"
                                         >
                                             <MoreVertical className="w-5 h-5" />
@@ -183,12 +189,13 @@ export function ProjectNav({
                             <input
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder=""
+                                placeholder={t("project.search")}
                                 className="flex-1 bg-transparent border-0 outline-0 text-white text-sm placeholder:text-white/30"
                             />
                             <button
                                 ref={filterBtnRef}
                                 onClick={() => setFiltersOpen(!filtersOpen)}
+                                aria-label={t("project.sortFilter")}
                                 className={`flex items-center justify-center w-8 h-8 rounded-full shrink-0 transition-colors ${filtersOpen ? "bg-white/15 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                                     }`}
                             >
@@ -228,12 +235,15 @@ export function ProjectNav({
                                 step={10}
                                 value={gridSize}
                                 onChange={(e) => onGridSizeChange(Number(e.target.value))}
+                                aria-label={t("nav.gridSize")}
                                 className="w-24 accent-white cursor-pointer"
                             />
                             <Square className="w-5 h-5 text-white/40 shrink-0" />
                         </div>
 
-                        <button className="flex items-center p-1">
+                        <LanguageSwitcher />
+
+                        <button aria-label={t("nav.userMenu")} className="flex items-center p-1">
                             <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-xs font-medium uppercase text-flow-text-secondary">
                                 U
                             </div>
@@ -281,6 +291,8 @@ const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
         },
         ref
     ) {
+        const { t } = useI18n()
+
         // Close on click outside
         useEffect(() => {
             const handleClick = (e: MouseEvent) => {
@@ -437,7 +449,7 @@ const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
 
                     {/* Resultados */}
                     <div className="text-sm text-white/70">
-                        {t("project.filterResults")}: {resultCount}
+                        {t("project.filterResults", { count: resultCount })}
                     </div>
                 </div>
             </motion.div>
@@ -519,6 +531,7 @@ function NavMenu({
     onClose: () => void
     triggerRef: React.RefObject<HTMLButtonElement | null>
 }) {
+    const { t } = useI18n()
     const ref = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -558,14 +571,14 @@ function NavMenu({
                     className="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors"
                 >
                     <Pencil className="w-[1.125rem] h-[1.125rem]" />
-                    Renomear
+                    {t("project.rename")}
                 </button>
                 <button
                     onClick={onDelete}
                     className="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors"
                 >
                     <Trash2 className="w-[1.125rem] h-[1.125rem]" />
-                    Excluir
+                    {t("project.delete")}
                 </button>
             </div>
         </motion.div>

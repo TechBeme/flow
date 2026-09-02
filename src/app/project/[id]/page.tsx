@@ -9,7 +9,8 @@ import { ProjectNav } from "@/components/project-nav"
 import { MediaGrid } from "@/components/media-grid"
 import { GenerationPanel } from "@/components/generation-panel"
 import type { AspectRatio, GenerationRequest } from "@/lib/types"
-import { getGenerationErrorMessage } from "@/lib/generation-errors"
+import { getGenerationErrorKey } from "@/lib/generation-errors"
+import { useI18n } from "@/lib/i18n"
 
 function getImageDimensions(dataUrl: string): Promise<{ width: number; height: number }> {
     return new Promise((resolve) => {
@@ -45,6 +46,7 @@ function wait(ms: number): Promise<void> {
 }
 
 function ProjectDetailContent() {
+    const { t } = useI18n()
     const params = useParams()
     const projectId = params.id as string
 
@@ -140,6 +142,14 @@ function ProjectDetailContent() {
         [deleteMediaItem]
     )
 
+    const localizeGenerationError = useCallback((error: unknown) => {
+        const message = error instanceof Error ? error.message : String(error ?? "")
+        const status = message.match(/^HTTP_STATUS_(\d{3})$/)?.[1]
+        return status
+            ? t("error.http", { status })
+            : t(getGenerationErrorKey(error))
+    }, [t])
+
     const handleGenerate = useCallback(
         async (request: GenerationRequest & { referenceImages?: string[] }) => {
             const {
@@ -192,12 +202,12 @@ function ProjectDetailContent() {
                         }),
                     })
                     const startData = await startRes.json().catch(() => ({}))
-                    if (!startRes.ok) throw new Error(startData.error || `Erro ${startRes.status}`)
+                    if (!startRes.ok) throw new Error(startData.error || `HTTP_STATUS_${startRes.status}`)
 
                     const operationName = startData.operationName as string | undefined
                     const interactionId = startData.interactionId as string | undefined
                     if (!operationName && !interactionId) {
-                        throw new Error("A API nao retornou o identificador da geracao de video")
+                        throw new Error("VIDEO_IDENTIFIER_MISSING")
                     }
 
                     const item = newItems[0]
@@ -208,11 +218,11 @@ function ProjectDetailContent() {
                             : `operation=${encodeURIComponent(operationName!)}`
                         const statusRes = await fetch(`/api/generate/video?${statusQuery}`, { cache: "no-store" })
                         const statusData = await statusRes.json().catch(() => ({}))
-                        if (!statusRes.ok) throw new Error(statusData.error || `Erro ${statusRes.status}`)
+                        if (!statusRes.ok) throw new Error(statusData.error || `HTTP_STATUS_${statusRes.status}`)
                         if (!statusData.done) continue
 
                         const videoUrl = statusData.videoUrl as string | undefined
-                        if (!videoUrl) throw new Error("A API concluiu sem retornar o arquivo de video")
+                        if (!videoUrl) throw new Error("VIDEO_FILE_MISSING")
 
                         updateMediaItem(item.id, {
                             url: videoUrl,
@@ -224,7 +234,7 @@ function ProjectDetailContent() {
                         return
                     }
 
-                    throw new Error("A geracao de video demorou mais de 15 minutos")
+                    throw new Error("VIDEO_GENERATION_TIMEOUT")
                 }
 
                 const res = await fetch("/api/generate", {
@@ -235,11 +245,11 @@ function ProjectDetailContent() {
 
                 if (!res.ok) {
                     const errData = await res.json().catch(() => ({}))
-                    throw new Error(errData.error || `Erro ${res.status}`)
+                    throw new Error(errData.error || `HTTP_STATUS_${res.status}`)
                 }
 
                 const data = await res.json()
-                const results = data.results as Array<{ imageData?: string; text?: string; error?: string; finishReason?: string }>
+                const results = data.results as Array<{ imageData?: string; text?: string; error?: string; reason?: string }>
 
                 const saves: Promise<void>[] = []
 
@@ -249,11 +259,13 @@ function ProjectDetailContent() {
 
                     if (result.error) {
                         console.error("[ProjectDetail] Generation failed for item:", item.id, result.error)
+                        const errorSource = result.reason || result.error
+                        const generationError = localizeGenerationError(errorSource)
                         updateMediaItem(item.id, {
                             status: "error",
-                            generationError: getGenerationErrorMessage(result.error),
+                            generationError: errorSource,
                         })
-                        toast.error(result.error, { duration: 6000 })
+                        toast.error(generationError, { duration: 6000 })
                     } else if (result.imageData) {
                         updateMediaItem(item.id, {
                             url: result.imageData,
@@ -274,13 +286,15 @@ function ProjectDetailContent() {
                 }
             } catch (err) {
                 console.error("[ProjectDetail] Generation error:", err)
-                const generationError = getGenerationErrorMessage(err)
+                const generationError = localizeGenerationError(err)
+                const errorSource = err instanceof Error ? err.message : String(err ?? "")
                 newItems.forEach((item) => {
-                    updateMediaItem(item.id, { status: "error", generationError })
+                    updateMediaItem(item.id, { status: "error", generationError: errorSource })
                 })
+                toast.error(generationError, { duration: 6000 })
             }
         },
-        [projectId, addMediaItem, updateMediaItem, persistMediaItem, updateProjectThumbnail]
+        [projectId, addMediaItem, updateMediaItem, persistMediaItem, updateProjectThumbnail, localizeGenerationError]
     )
 
     if (!project) {
@@ -288,7 +302,7 @@ function ProjectDetailContent() {
         if (projectLookup === "error") {
             return (
                 <div className="flex min-h-screen items-center justify-center bg-black px-6 text-center text-white/70">
-                    Não foi possível carregar o projeto. Tente atualizar a página.
+                    {t("project.loadError")}
                 </div>
             )
         }

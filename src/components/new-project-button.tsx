@@ -3,24 +3,25 @@
 import { Plus } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useFlowStore } from "@/lib/store"
-import { t } from "@/lib/i18n"
+import { localeForIntl, useI18n, type Locale } from "@/lib/i18n"
 
-function generateProjectName(): string {
+function generateProjectName(locale: Locale, t: ReturnType<typeof useI18n>["t"]): string {
     const now = new Date()
-    const month = now.toLocaleString("pt-BR", { month: "short" }).replace(".", "")
-    const cap = month.charAt(0).toUpperCase() + month.slice(1)
+    const monthName = now.toLocaleString(localeForIntl(locale), { month: "short" }).replace(".", "")
+    const month = monthName.charAt(0).toUpperCase() + monthName.slice(1)
     const day = now.getDate().toString().padStart(2, "0")
     const hours = now.getHours().toString().padStart(2, "0")
     const minutes = now.getMinutes().toString().padStart(2, "0")
-    return `${cap} ${day} - ${hours}:${minutes}`
+    return t("projects.defaultName", { month, day, time: `${hours}:${minutes}` })
 }
 
 export function NewProjectButton() {
+    const { locale, t } = useI18n()
     const createProject = useFlowStore((s) => s.createProject)
     const router = useRouter()
 
     const handleCreate = async () => {
-        const name = generateProjectName()
+        const name = generateProjectName(locale, t)
         const project = await createProject(name)
         router.push(`/project/${project.id}`)
     }

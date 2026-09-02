@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { I18nProvider } from "@/lib/i18n";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -66,12 +67,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} antialiased bg-black`}>
-        <TooltipProvider delayDuration={200}>
-          {children}
-        </TooltipProvider>
-        <Toaster position="top-center" closeButton />
+        <I18nProvider>
+          <TooltipProvider delayDuration={200}>
+            {children}
+          </TooltipProvider>
+          <Toaster position="top-center" closeButton />
+        </I18nProvider>
       </body>
     </html>
   );
