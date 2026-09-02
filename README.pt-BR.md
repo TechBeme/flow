@@ -5,7 +5,7 @@
 
   **Um workspace open source para criar imagens e vídeos com IA por meio de APIs.**
 
-  Transforme prompts e imagens de referência em histórias visuais com Nano Banana, Omni e Veo — dentro de uma única interface cinematográfica.
+  Transforme prompts e imagens de referência em histórias visuais com Nano Banana, Omni e Veo dentro de uma única interface cinematográfica.
 
   [![Demo](https://img.shields.io/badge/demo-flow.techbe.me-111111?style=for-the-badge)](https://flow.techbe.me)
   [![Estrelas no GitHub](https://img.shields.io/github/stars/TechBeme/flow?style=for-the-badge&logo=github&color=F4C430)](https://github.com/TechBeme/flow/stargazers)

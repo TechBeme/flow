@@ -75,7 +75,7 @@ export function MediaGrid({ items, onReusePrompt, onDelete, gridSize = 140, onDr
     const [isDragOver, setIsDragOver] = useState(false)
     const dragCounterRef = useRef(0)
 
-    // Lightbox state — only "done" items are viewable
+    // Lightbox state: only "done" items are viewable
     const doneItems = items.filter(it => it.status === "done")
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 

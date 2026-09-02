@@ -6,11 +6,11 @@ Flow uses server-only environment variables. Variables without the `NEXT_PUBLIC_
 
 | Variable | Required | Default | Description |
 | --- | --- | --- | --- |
-| `DATABASE_URL` | Yes | — | PostgreSQL connection string |
-| `GOOGLE_SERVICE_ACCOUNT_JSON` | One credential method | — | Complete service-account JSON; recommended for Vercel |
-| `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` | One credential method | — | Base64-encoded service-account JSON |
-| `GOOGLE_APPLICATION_CREDENTIALS` | One credential method | — | Absolute or repository-relative path to a service-account JSON file |
-| `GOOGLE_SERVICE_ACCOUNT_KEY` | No | — | Backward-compatible alias for the credential file path |
+| `DATABASE_URL` | Yes | N/A | PostgreSQL connection string |
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | One credential method | N/A | Complete service-account JSON; recommended for Vercel |
+| `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` | One credential method | N/A | Base64-encoded service-account JSON |
+| `GOOGLE_APPLICATION_CREDENTIALS` | One credential method | N/A | Absolute or repository-relative path to a service-account JSON file |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | No | N/A | Backward-compatible alias for the credential file path |
 | `GOOGLE_CLOUD_PROJECT` | No | `project_id` from credentials | Google Cloud project ID override |
 | `GOOGLE_CLOUD_LOCATION` | No | `global` | Vertex location used for Gemini image and Omni requests |
 | `GOOGLE_CLOUD_VIDEO_LOCATION` | No | `us-central1` | Vertex location used for Veo requests |

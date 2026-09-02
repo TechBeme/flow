@@ -272,7 +272,7 @@ function ProjectDetailContent() {
 
     if (!project) {
         if (!projectsLoaded) {
-            // Still loading — render nothing rather than 404
+            // Still loading: render nothing rather than 404
             return null
         }
         notFound()

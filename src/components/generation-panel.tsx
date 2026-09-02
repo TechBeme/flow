@@ -242,14 +242,14 @@ export function GenerationPanel({
         const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith("image/"))
         if (files.length > 0) { await attachImage(files[0], false); return }
 
-        // 2. "text/html" — dragged from browser (img src inside)
+        // 2. "text/html": dragged from browser (img src inside)
         const html = e.dataTransfer.getData("text/html")
         if (html) {
             const match = html.match(/src=["']([^"']+)["']/)
             if (match?.[1]) { await attachImage(match[1], isFromGallery); return }
         }
 
-        // 3. "text/uri-list" or "text/plain" — dragged image URL or data URI
+        // 3. "text/uri-list" or "text/plain": dragged image URL or data URI
         const uri = e.dataTransfer.getData("text/uri-list") || e.dataTransfer.getData("text/plain")
         if (uri && (uri.startsWith("http") || uri.startsWith("data:image"))) {
             await attachImage(uri, isFromGallery)

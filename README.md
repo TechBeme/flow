@@ -5,7 +5,7 @@
 
   **An open-source creative workspace for AI image and video generation through APIs.**
 
-  Turn prompts and reference images into visual stories with Nano Banana, Omni, and Veo — from one focused, cinematic interface.
+  Turn prompts and reference images into visual stories with Nano Banana, Omni, and Veo from one focused, cinematic interface.
 
   [![Demo](https://img.shields.io/badge/demo-flow.techbe.me-111111?style=for-the-badge)](https://flow.techbe.me)
   [![GitHub stars](https://img.shields.io/github/stars/TechBeme/flow?style=for-the-badge&logo=github&color=F4C430)](https://github.com/TechBeme/flow/stargazers)
@@ -79,7 +79,7 @@ For Veo, outputs above 720p use an 8-second duration because that is the constra
 - Responsive desktop and mobile interface
 - Media preview, zoom, download, delete, and prompt reuse
 - Portuguese product interface with English-first project documentation
-- Direct Vertex AI authentication — no Google AI Studio API key required
+- Direct Vertex AI authentication, with no Google AI Studio API key required
 
 ## Tech stack
 
@@ -159,7 +159,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000), create a project, and start generating. The database schema is created automatically on the first project/media request.
 
-The complete setup — including Google Cloud IAM — is in [Getting Started](docs/GETTING-STARTED.md).
+The complete setup, including Google Cloud IAM, is in [Getting Started](docs/GETTING-STARTED.md).
 
 ## Deploy on Vercel
 
@@ -188,14 +188,14 @@ See [Deployment](docs/DEPLOYMENT.md) and [Configuration](docs/CONFIGURATION.md) 
 
 ## Documentation
 
-- [Getting Started](docs/GETTING-STARTED.md) — local setup and Google Cloud preparation
-- [Configuration](docs/CONFIGURATION.md) — every environment variable and credential method
-- [Architecture](docs/ARCHITECTURE.md) — components, data flow, and model integrations
-- [API Reference](docs/API.md) — internal HTTP routes and payloads
-- [Development](docs/DEVELOPMENT.md) — repository structure and contribution workflow
-- [Testing](docs/TESTING.md) — current checks and manual verification
-- [Deployment](docs/DEPLOYMENT.md) — Vercel and production considerations
-- [Security Policy](SECURITY.md) — responsible vulnerability reporting
+- [Getting Started](docs/GETTING-STARTED.md): local setup and Google Cloud preparation
+- [Configuration](docs/CONFIGURATION.md): every environment variable and credential method
+- [Architecture](docs/ARCHITECTURE.md): components, data flow, and model integrations
+- [API Reference](docs/API.md): internal HTTP routes and payloads
+- [Development](docs/DEVELOPMENT.md): repository structure and contribution workflow
+- [Testing](docs/TESTING.md): current checks and manual verification
+- [Deployment](docs/DEPLOYMENT.md): Vercel and production considerations
+- [Security Policy](SECURITY.md): responsible vulnerability reporting
 
 ## Roadmap
 
@@ -213,7 +213,7 @@ Have an idea? [Open a feature request](https://github.com/TechBeme/flow/issues/n
 
 ## Contributing
 
-Contributions are welcome — from bug fixes and provider improvements to accessibility, documentation, model support, and creative tooling.
+Contributions are welcome, from bug fixes and provider improvements to accessibility, documentation, model support, and creative tooling.
 
 1. Read [CONTRIBUTING.md](CONTRIBUTING.md).
 2. Fork the repository and create a focused branch.
