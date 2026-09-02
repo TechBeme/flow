@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import {
+    API_NOT_CONFIGURED_ERROR,
     getVertexAccessToken,
     getVertexConfig,
+    isVertexConfigurationError,
     vertexBaseUrl,
     vertexHeaders,
 } from "@/lib/server/vertex-auth"
@@ -50,8 +52,8 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.error("[video] Vertex auth error:", error)
         return NextResponse.json(
-            { error: (error as Error).message || "Falha ao autenticar no Vertex AI." },
-            { status: 500 }
+            { error: isVertexConfigurationError(error) ? API_NOT_CONFIGURED_ERROR : "API_AUTHENTICATION_FAILED" },
+            { status: isVertexConfigurationError(error) ? 503 : 500 }
         )
     }
 
@@ -191,8 +193,8 @@ export async function GET(request: NextRequest) {
     } catch (error) {
         console.error("[video] Vertex auth error:", error)
         return NextResponse.json(
-            { error: (error as Error).message || "Falha ao autenticar no Vertex AI." },
-            { status: 500 }
+            { error: isVertexConfigurationError(error) ? API_NOT_CONFIGURED_ERROR : "API_AUTHENTICATION_FAILED" },
+            { status: isVertexConfigurationError(error) ? 503 : 500 }
         )
     }
 

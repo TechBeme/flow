@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import {
+    API_NOT_CONFIGURED_ERROR,
     getVertexAccessToken,
     getVertexConfig,
+    isVertexConfigurationError,
     vertexBaseUrl,
     vertexHeaders,
 } from "@/lib/server/vertex-auth"
@@ -51,8 +53,8 @@ export async function POST(request: NextRequest) {
     } catch (e) {
         console.error("[generate] Vertex auth error:", e)
         return NextResponse.json(
-            { error: (e as Error).message || "Falha ao autenticar no Vertex AI." },
-            { status: 500 }
+            { error: isVertexConfigurationError(e) ? API_NOT_CONFIGURED_ERROR : "API_AUTHENTICATION_FAILED" },
+            { status: isVertexConfigurationError(e) ? 503 : 500 }
         )
     }
 

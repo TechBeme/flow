@@ -1,6 +1,8 @@
 import type { TranslationKey } from "@/lib/i18n"
 
 const KNOWN_GENERATION_ERRORS: Array<[RegExp, TranslationKey]> = [
+    [/API_NOT_CONFIGURED/i, "error.apiNotConfigured"],
+    [/API_AUTHENTICATION_FAILED/i, "error.apiAuthentication"],
     [/VIDEO_IDENTIFIER_MISSING/i, "error.videoIdentifier"],
     [/VIDEO_FILE_MISSING/i, "error.videoFile"],
     [/VIDEO_GENERATION_TIMEOUT/i, "error.videoTimeout"],

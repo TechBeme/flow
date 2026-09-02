@@ -121,6 +121,8 @@ const en = {
 
     "error.http": "Request failed with status {status}.",
     "error.generationFailed": "Generation failed. Try again.",
+    "error.apiNotConfigured": "Generation is unavailable in this demo because the API is not configured. Configure the required API credentials to generate media.",
+    "error.apiAuthentication": "The generation API could not authenticate. Check the configured API credentials.",
     "error.safety": "Content blocked by the safety policy.",
     "error.quota": "Quota exhausted. Check your API limits and try again later.",
     "error.imageSafety": "The image was blocked by Google's usage policies. Rephrase the prompt or use another reference image.",
@@ -249,6 +251,8 @@ const ptBR: Dictionary = {
 
     "error.http": "A solicitação falhou com o status {status}.",
     "error.generationFailed": "Não foi possível gerar. Tente novamente.",
+    "error.apiNotConfigured": "A geração não está disponível nesta demonstração porque a API não foi configurada. Configure as credenciais necessárias da API para gerar mídia.",
+    "error.apiAuthentication": "A API de geração não conseguiu autenticar. Confira as credenciais configuradas.",
     "error.safety": "Conteúdo bloqueado pela política de segurança.",
     "error.quota": "Cota esgotada. Confira os limites da API e tente novamente mais tarde.",
     "error.imageSafety": "A imagem foi bloqueada pelas políticas de uso do Google. Reformule o prompt ou use outra imagem de referência.",
@@ -373,6 +377,8 @@ const es: Dictionary = {
 
     "error.http": "La solicitud falló con el estado {status}.",
     "error.generationFailed": "No se pudo generar. Inténtalo de nuevo.",
+    "error.apiNotConfigured": "La generación no está disponible en esta demostración porque la API no está configurada. Configura las credenciales necesarias de la API para generar contenido.",
+    "error.apiAuthentication": "La API de generación no pudo autenticarse. Revisa las credenciales configuradas.",
     "error.safety": "Contenido bloqueado por la política de seguridad.",
     "error.quota": "Cuota agotada. Revisa los límites de la API e inténtalo más tarde.",
     "error.imageSafety": "La imagen fue bloqueada por las políticas de uso de Google. Reformula el prompt o usa otra imagen de referencia.",

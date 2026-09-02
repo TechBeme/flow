@@ -9,6 +9,19 @@ interface ServiceAccountKey {
     project_id: string
 }
 
+export const API_NOT_CONFIGURED_ERROR = "API_NOT_CONFIGURED"
+
+export class VertexConfigurationError extends Error {
+    constructor() {
+        super(API_NOT_CONFIGURED_ERROR)
+        this.name = "VertexConfigurationError"
+    }
+}
+
+export function isVertexConfigurationError(error: unknown): boolean {
+    return error instanceof VertexConfigurationError
+}
+
 export interface VertexConfig {
     projectId: string
     globalLocation: string
@@ -30,7 +43,7 @@ function sourceFingerprint(prefix: string, value: string): string {
 
 function validateCredentials(parsed: Partial<ServiceAccountKey>): ServiceAccountKey {
     if (!parsed.client_email || !parsed.private_key || !parsed.token_uri || !parsed.project_id) {
-        throw new Error("As credenciais do Vertex AI estao incompletas.")
+        throw new VertexConfigurationError()
     }
 
     return parsed as ServiceAccountKey
@@ -59,9 +72,7 @@ async function loadCredentials(): Promise<{ credentials: ServiceAccountKey; sour
         process.env.GOOGLE_SERVICE_ACCOUNT_KEY
 
     if (!configuredPath) {
-        throw new Error(
-            "Vertex AI nao configurado. Defina GOOGLE_SERVICE_ACCOUNT_JSON ou GOOGLE_APPLICATION_CREDENTIALS."
-        )
+        throw new VertexConfigurationError()
     }
 
     const credentialsPath = path.isAbsolute(configuredPath)
