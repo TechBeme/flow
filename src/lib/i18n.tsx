@@ -121,7 +121,7 @@ const en = {
 
     "error.http": "Request failed with status {status}.",
     "error.generationFailed": "Generation failed. Try again.",
-    "error.apiNotConfigured": "Generation is unavailable in this demo because the API is not configured. Configure the required API credentials to generate media.",
+    "error.apiNotConfigured": "The generation API is not configured. Configure the required credentials to generate images and videos.",
     "error.apiAuthentication": "The generation API could not authenticate. Check the configured API credentials.",
     "error.safety": "Content blocked by the safety policy.",
     "error.quota": "Quota exhausted. Check your API limits and try again later.",
@@ -251,7 +251,7 @@ const ptBR: Dictionary = {
 
     "error.http": "A solicitação falhou com o status {status}.",
     "error.generationFailed": "Não foi possível gerar. Tente novamente.",
-    "error.apiNotConfigured": "A geração não está disponível nesta demonstração porque a API não foi configurada. Configure as credenciais necessárias da API para gerar mídia.",
+    "error.apiNotConfigured": "A API de geração não está configurada. Configure as credenciais necessárias para gerar imagens e vídeos.",
     "error.apiAuthentication": "A API de geração não conseguiu autenticar. Confira as credenciais configuradas.",
     "error.safety": "Conteúdo bloqueado pela política de segurança.",
     "error.quota": "Cota esgotada. Confira os limites da API e tente novamente mais tarde.",
@@ -377,7 +377,7 @@ const es: Dictionary = {
 
     "error.http": "La solicitud falló con el estado {status}.",
     "error.generationFailed": "No se pudo generar. Inténtalo de nuevo.",
-    "error.apiNotConfigured": "La generación no está disponible en esta demostración porque la API no está configurada. Configura las credenciales necesarias de la API para generar contenido.",
+    "error.apiNotConfigured": "La API de generación no está configurada. Configura las credenciales necesarias para generar imágenes y videos.",
     "error.apiAuthentication": "La API de generación no pudo autenticarse. Revisa las credenciales configuradas.",
     "error.safety": "Contenido bloqueado por la política de seguridad.",
     "error.quota": "Cuota agotada. Revisa los límites de la API e inténtalo más tarde.",
