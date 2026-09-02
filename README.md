@@ -9,6 +9,7 @@
 
   [![Demo](https://img.shields.io/badge/demo-flow.techbe.me-111111?style=for-the-badge)](https://flow.techbe.me)
   [![GitHub stars](https://img.shields.io/github/stars/TechBeme/flow?style=for-the-badge&logo=github&color=F4C430)](https://github.com/TechBeme/flow/stargazers)
+  [![CI](https://img.shields.io/github/actions/workflow/status/TechBeme/flow/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/TechBeme/flow/actions/workflows/ci.yml)
   [![MIT License](https://img.shields.io/badge/license-MIT-2ea44f?style=for-the-badge)](LICENSE)
 
   [English](README.md) · [Português (Brasil)](README.pt-BR.md) · [Documentation](docs/GETTING-STARTED.md) · [Report a bug](https://github.com/TechBeme/flow/issues/new?template=bug_report.yml) · [Request a feature](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml)
