@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
-import { sql, ensureSchema } from "@/lib/db"
+import { ensureSchema } from "@/lib/db"
 
 export async function GET() {
-    await ensureSchema()
+    const sql = await ensureSchema()
     const rows = await sql`
         SELECT id, name, thumbnail, grid_size AS "gridSize",
                created_at AS "createdAt", updated_at AS "updatedAt"
@@ -13,7 +13,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-    await ensureSchema()
+    const sql = await ensureSchema()
     const { name } = await request.json()
     if (!name || typeof name !== "string" || name.trim().length === 0) {
         return NextResponse.json({ error: "Invalid name" }, { status: 400 })

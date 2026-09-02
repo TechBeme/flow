@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { sql } from "@/lib/db"
+import { getSql } from "@/lib/db"
 
 export async function PATCH(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
+    const sql = getSql()
     const { id } = await params
     const { url, thumbnail, status } = await request.json()
 
@@ -31,6 +32,7 @@ export async function DELETE(
     _request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
+    const sql = getSql()
     const { id } = await params
     await sql`DELETE FROM media_items WHERE id = ${id}`
     return NextResponse.json({ ok: true })

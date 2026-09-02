@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
-import { sql } from "@/lib/db"
+import { getSql } from "@/lib/db"
 
 export async function POST(request: NextRequest) {
+    const sql = getSql()
     const body = await request.json()
     const { projectId, type, url, thumbnail, prompt, model, aspectRatio, status, referenceImage } = body
 

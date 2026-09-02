@@ -12,6 +12,8 @@ npm run build
 
 GitHub Actions runs these checks for pushes and pull requests.
 
+The production build does not require live database or Vertex AI credentials. Those integrations are initialized only when their server routes are called.
+
 ## Manual smoke test
 
 1. Start the app and load the project dashboard.

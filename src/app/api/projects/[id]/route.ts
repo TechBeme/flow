@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { sql } from "@/lib/db"
+import { getSql } from "@/lib/db"
 
 export async function PATCH(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
+    const sql = getSql()
     const { id } = await params
     const body = await request.json()
     const { name, thumbnail, gridSize } = body
@@ -52,6 +53,7 @@ export async function DELETE(
     _request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
+    const sql = getSql()
     const { id } = await params
     await sql`DELETE FROM projects WHERE id = ${id}`
     return NextResponse.json({ ok: true })

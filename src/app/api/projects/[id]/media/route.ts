@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { sql } from "@/lib/db"
+import { getSql } from "@/lib/db"
 
 export async function GET(
     _request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
+    const sql = getSql()
     const { id } = await params
     const MAX_ITEMS = 24
     const MAX_RESPONSE_BYTES = 58 * 1024 * 1024 // stay below Neon 64MB hard limit

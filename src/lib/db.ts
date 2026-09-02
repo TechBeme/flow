@@ -1,8 +1,23 @@
-import { neon } from "@neondatabase/serverless"
+import { neon, type NeonQueryFunction } from "@neondatabase/serverless"
 
-export const sql = neon(process.env.DATABASE_URL!)
+type SqlClient = NeonQueryFunction<false, false>
+
+let sqlClient: SqlClient | null = null
+
+export function getSql(): SqlClient {
+    if (sqlClient) return sqlClient
+
+    const databaseUrl = process.env.DATABASE_URL
+    if (!databaseUrl) {
+        throw new Error("DATABASE_URL nao configurada.")
+    }
+
+    sqlClient = neon(databaseUrl)
+    return sqlClient
+}
 
 export async function ensureSchema() {
+    const sql = getSql()
     await sql`
         CREATE TABLE IF NOT EXISTS projects (
             id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -31,4 +46,5 @@ export async function ensureSchema() {
         )
     `
     await sql`ALTER TABLE media_items ADD COLUMN IF NOT EXISTS reference_image TEXT`
+    return sql
 }
