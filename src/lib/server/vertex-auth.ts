@@ -77,7 +77,7 @@ async function loadCredentials(): Promise<{ credentials: ServiceAccountKey; sour
 
     const credentialsPath = path.isAbsolute(configuredPath)
         ? configuredPath
-        : path.resolve(process.cwd(), configuredPath)
+        : path.resolve(/* turbopackIgnore: true */ process.cwd(), configuredPath)
 
     const parsed = JSON.parse(await readFile(credentialsPath, "utf-8")) as Partial<ServiceAccountKey>
     return {
