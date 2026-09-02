@@ -1,6 +1,21 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getSql } from "@/lib/db"
 
+export async function GET(
+    _request: NextRequest,
+    { params }: { params: Promise<{ id: string }> }
+) {
+    const sql = getSql()
+    const { id } = await params
+    const [row] = await sql`
+        SELECT id, name, thumbnail, grid_size AS "gridSize",
+               created_at AS "createdAt", updated_at AS "updatedAt"
+        FROM projects WHERE id = ${id}
+    `
+    if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 })
+    return NextResponse.json(row)
+}
+
 export async function PATCH(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }> }

@@ -49,8 +49,7 @@ function ProjectDetailContent() {
     const projectId = params.id as string
 
     const project = useFlowStore((s) => s.projects.find((p) => p.id === projectId))
-    const projectsLoaded = useFlowStore((s) => s.projectsLoaded)
-    const loadProjects = useFlowStore((s) => s.loadProjects)
+    const loadProject = useFlowStore((s) => s.loadProject)
     const allMediaItems = useFlowStore((s) => s.mediaItems)
     const mediaItems = useMemo(
         () => allMediaItems.filter((m) => m.projectId === projectId),
@@ -64,6 +63,7 @@ function ProjectDetailContent() {
     const updateProjectThumbnail = useFlowStore((s) => s.updateProjectThumbnail)
     const updateProjectGridSize = useFlowStore((s) => s.updateProjectGridSize)
 
+    const [projectLookup, setProjectLookup] = useState<"loading" | "found" | "missing" | "error">("loading")
     const [reuseData, setReuseData] = useState<{ id: string; prompt: string; referenceImages?: string[] | null } | undefined>(undefined)
     const [gridSize, setGridSize] = useState(() => {
         const saved = localStorage.getItem(`gridSize_${projectId}`)
@@ -73,9 +73,22 @@ function ProjectDetailContent() {
     const gridSizeSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     useEffect(() => {
-        if (!projectsLoaded) loadProjects()
-        loadProjectMedia(projectId)
-    }, [projectId, loadProjects, loadProjectMedia, projectsLoaded])
+        let active = true
+        setProjectLookup("loading")
+
+        void loadProject(projectId)
+            .then((loadedProject) => {
+                if (active) setProjectLookup(loadedProject ? "found" : "missing")
+            })
+            .catch(() => {
+                if (active) setProjectLookup("error")
+            })
+
+        void loadProjectMedia(projectId)
+        return () => {
+            active = false
+        }
+    }, [projectId, loadProject, loadProjectMedia])
 
     // Sync gridSize from DB on first project load only if localStorage has no saved value
     useEffect(() => {
@@ -271,11 +284,15 @@ function ProjectDetailContent() {
     )
 
     if (!project) {
-        if (!projectsLoaded) {
-            // Still loading: render nothing rather than 404
-            return null
+        if (projectLookup === "missing") notFound()
+        if (projectLookup === "error") {
+            return (
+                <div className="flex min-h-screen items-center justify-center bg-black px-6 text-center text-white/70">
+                    Não foi possível carregar o projeto. Tente atualizar a página.
+                </div>
+            )
         }
-        notFound()
+        return null
     }
 
     return (

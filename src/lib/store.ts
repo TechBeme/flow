@@ -2,11 +2,15 @@ import { create } from "zustand"
 import { v4 as uuidv4 } from "uuid"
 import type { Project, MediaItem } from "./types"
 
+let projectsLoadSequence = 0
+let projectsMutationSequence = 0
+
 interface FlowStore {
     // Projects
     projects: Project[]
     projectsLoaded: boolean
     loadProjects: () => Promise<void>
+    loadProject: (id: string) => Promise<Project | null>
     createProject: (name: string) => Promise<Project>
     deleteProject: (id: string) => Promise<void>
     renameProject: (id: string, name: string) => Promise<void>
@@ -33,17 +37,29 @@ export const useFlowStore = create<FlowStore>()((set, get) => ({
     mediaItems: [],
 
     loadProjects: async () => {
+        const loadSequence = ++projectsLoadSequence
+        const mutationSequence = projectsMutationSequence
         const res = await fetch("/api/projects")
         if (!res.ok) return
         const projects: Project[] = await res.json()
+        if (loadSequence !== projectsLoadSequence || mutationSequence !== projectsMutationSequence) return
         set({ projects, projectsLoaded: true })
     },
 
+    loadProject: async (id: string) => {
+        const res = await fetch(`/api/projects/${id}`, { cache: "no-store" })
+        if (res.status === 404) return null
+        if (!res.ok) throw new Error("Failed to load project")
+
+        const project: Project = await res.json()
+        projectsMutationSequence++
+        set((s) => ({
+            projects: [project, ...s.projects.filter((p) => p.id !== project.id)],
+        }))
+        return project
+    },
+
     createProject: async (name: string) => {
-        const tempId = uuidv4()
-        const now = new Date().toISOString()
-        const optimistic: Project = { id: tempId, name, thumbnail: null, createdAt: now, updatedAt: now }
-        set((s) => ({ projects: [optimistic, ...s.projects] }))
         try {
             const res = await fetch("/api/projects", {
                 method: "POST",
@@ -52,15 +68,19 @@ export const useFlowStore = create<FlowStore>()((set, get) => ({
             })
             if (!res.ok) throw new Error()
             const project: Project = await res.json()
-            set((s) => ({ projects: s.projects.map((p) => (p.id === tempId ? project : p)) }))
+            projectsMutationSequence++
+            set((s) => ({
+                projects: [project, ...s.projects.filter((p) => p.id !== project.id)],
+                projectsLoaded: true,
+            }))
             return project
         } catch {
-            set((s) => ({ projects: s.projects.filter((p) => p.id !== tempId) }))
             throw new Error("Failed to create project")
         }
     },
 
     deleteProject: async (id: string) => {
+        projectsMutationSequence++
         set((s) => ({
             projects: s.projects.filter((p) => p.id !== id),
             mediaItems: s.mediaItems.filter((m) => m.projectId !== id),
@@ -69,6 +89,7 @@ export const useFlowStore = create<FlowStore>()((set, get) => ({
     },
 
     renameProject: async (id: string, name: string) => {
+        projectsMutationSequence++
         set((s) => ({
             projects: s.projects.map((p) =>
                 p.id === id ? { ...p, name, updatedAt: new Date().toISOString() } : p
@@ -82,6 +103,7 @@ export const useFlowStore = create<FlowStore>()((set, get) => ({
     },
 
     updateProjectThumbnail: async (id: string, thumbnail: string) => {
+        projectsMutationSequence++
         set((s) => ({
             projects: s.projects.map((p) =>
                 p.id === id ? { ...p, thumbnail, updatedAt: new Date().toISOString() } : p
@@ -95,6 +117,7 @@ export const useFlowStore = create<FlowStore>()((set, get) => ({
     },
 
     updateProjectGridSize: async (id: string, gridSize: number) => {
+        projectsMutationSequence++
         set((s) => ({
             projects: s.projects.map((p) =>
                 p.id === id ? { ...p, gridSize, updatedAt: new Date().toISOString() } : p
