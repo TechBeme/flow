@@ -25,11 +25,11 @@
     <a href="https://github.com/TechBeme/flow/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/TechBeme/flow?style=social" /></a>
   </p>
 
+  **Languages:** 🇺🇸 English · [🇧🇷 Português](README.pt-BR.md) · [🇪🇸 Español](README.es.md)
+
   <p>
     <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTechBeme%2Fflow&amp;env=DATABASE_URL%2CGOOGLE_SERVICE_ACCOUNT_JSON&amp;envDescription=PostgreSQL%20connection%20and%20Google%20service-account%20JSON%20for%20generation&amp;envLink=https%3A%2F%2Fgithub.com%2FTechBeme%2Fflow%2Fblob%2Fmain%2Fdocs%2FCONFIGURATION.md"><img alt="Deploy with Vercel" src="https://vercel.com/button" /></a>
   </p>
-
-  **Languages:** 🇺🇸 English · [🇧🇷 Português](README.pt-BR.md) · [🇪🇸 Español](README.es.md)
 </div>
 
 ![Flow generation workspace showing model, aspect ratio, duration, resolution, and prompt controls](docs/images/generation-controls.png)
