@@ -3,7 +3,7 @@
 
   # Flow
 
-  **Um workspace open source para criar imagens e vídeos com IA usando o Google Cloud Vertex AI.**
+  **Um workspace open source para criar imagens e vídeos com IA por meio de APIs.**
 
   Transforme prompts e imagens de referência em histórias visuais com Nano Banana, Omni e Veo — dentro de uma única interface cinematográfica.
 
@@ -12,7 +12,9 @@
   [![CI](https://img.shields.io/github/actions/workflow/status/TechBeme/flow/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/TechBeme/flow/actions/workflows/ci.yml)
   [![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-2ea44f?style=for-the-badge)](LICENSE)
 
-  [English](README.md) · [Documentação](docs/GETTING-STARTED.md) · [Reportar bug](https://github.com/TechBeme/flow/issues/new?template=bug_report.yml) · [Sugerir recurso](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml)
+  **Idiomas:** [🇺🇸 English](README.md) · Português · [🇪🇸 Español](README.es.md)
+
+  [Documentação](docs/GETTING-STARTED.md) · [Reportar bug](https://github.com/TechBeme/flow/issues/new?template=bug_report.yml) · [Sugerir recurso](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml)
 </div>
 
 > [!IMPORTANT]
@@ -177,3 +179,16 @@ Você é responsável pelos custos em nuvem, conteúdo gerado, segurança do dep
 ## Licença
 
 Distribuído sob a [Licença MIT](LICENSE).
+
+---
+
+<div align="center">
+
+**Desenvolvido por [Rafael Vieira](https://github.com/TechBeme)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-TechBeme-181717?logo=github)](https://github.com/TechBeme)
+[![Fiverr](https://img.shields.io/badge/Fiverr-Tech__Be-1DBF73?logo=fiverr)](https://www.fiverr.com/tech_be)
+[![Upwork](https://img.shields.io/badge/Upwork-Perfil-14a800?logo=upwork)](https://www.upwork.com/freelancers/~01f0abcf70bbd95376)
+[![Email](https://img.shields.io/badge/Email-contact@techbe.me-EA4335?logo=gmail)](mailto:contact@techbe.me)
+
+</div>

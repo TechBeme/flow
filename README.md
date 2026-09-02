@@ -3,7 +3,7 @@
 
   # Flow
 
-  **An open-source creative workspace for AI image and video generation with Google Cloud Vertex AI.**
+  **An open-source creative workspace for AI image and video generation through APIs.**
 
   Turn prompts and reference images into visual stories with Nano Banana, Omni, and Veo — from one focused, cinematic interface.
 
@@ -12,7 +12,9 @@
   [![CI](https://img.shields.io/github/actions/workflow/status/TechBeme/flow/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/TechBeme/flow/actions/workflows/ci.yml)
   [![MIT License](https://img.shields.io/badge/license-MIT-2ea44f?style=for-the-badge)](LICENSE)
 
-  [English](README.md) · [Português (Brasil)](README.pt-BR.md) · [Documentation](docs/GETTING-STARTED.md) · [Report a bug](https://github.com/TechBeme/flow/issues/new?template=bug_report.yml) · [Request a feature](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml)
+  **Languages:** English · [🇧🇷 Português](README.pt-BR.md) · [🇪🇸 Español](README.es.md)
+
+  [Documentation](docs/GETTING-STARTED.md) · [Report a bug](https://github.com/TechBeme/flow/issues/new?template=bug_report.yml) · [Request a feature](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml)
 </div>
 
 > [!IMPORTANT]
@@ -234,6 +236,15 @@ You are responsible for your cloud costs, generated content, deployment security
 
 Released under the [MIT License](LICENSE).
 
+---
+
 <div align="center">
-  Built by <a href="https://github.com/TechBeme">TechBeme</a> for people who want a faster path from an idea to a visual story.
+
+**Developed by [Rafael Vieira](https://github.com/TechBeme)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-TechBeme-181717?logo=github)](https://github.com/TechBeme)
+[![Fiverr](https://img.shields.io/badge/Fiverr-Tech__Be-1DBF73?logo=fiverr)](https://www.fiverr.com/tech_be)
+[![Upwork](https://img.shields.io/badge/Upwork-Profile-14a800?logo=upwork)](https://www.upwork.com/freelancers/~01f0abcf70bbd95376)
+[![Email](https://img.shields.io/badge/Email-contact@techbe.me-EA4335?logo=gmail)](mailto:contact@techbe.me)
+
 </div>

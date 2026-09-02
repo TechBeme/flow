@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Flow",
   },
   description:
-    "Create AI images and cinematic videos with Google Cloud Vertex AI, Nano Banana, Omni, and Veo in one open-source workspace.",
+    "Create AI images and cinematic videos through APIs in one open-source workspace, with support for Nano Banana, Omni, and Veo.",
   applicationName: "Flow",
   keywords: [
     "AI image generator",
@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     siteName: "Flow",
     title: "Flow - Open-source AI image and video studio",
     description:
-      "Generate images and cinematic videos with Vertex AI, Nano Banana, Omni, and Veo.",
+      "Generate AI images and cinematic videos through APIs in one open-source creative workspace.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Flow AI creative workspace" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Flow - Open-source AI image and video studio",
     description:
-      "Generate images and cinematic videos with Vertex AI, Nano Banana, Omni, and Veo.",
+      "Generate AI images and cinematic videos through APIs in one open-source creative workspace.",
     images: ["/og-image.png"],
   },
   category: "technology",

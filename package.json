@@ -1,7 +1,7 @@
 {
   "name": "flow",
   "version": "0.1.0",
-  "description": "Open-source AI image and video creation workspace powered by Google Cloud Vertex AI, Gemini, Nano Banana, Omni, and Veo.",
+  "description": "Open-source AI image and video creation workspace with multi-model generation through APIs.",
   "private": true,
   "license": "MIT",
   "homepage": "https://flow.techbe.me",

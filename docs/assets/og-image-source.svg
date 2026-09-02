@@ -30,7 +30,7 @@
 
     <text x="72" y="205" font-size="72" font-weight="700" fill="#fff">Create images.</text>
     <text x="72" y="287" font-size="72" font-weight="700" fill="#fff">Direct videos.</text>
-    <text x="72" y="351" font-size="26" font-weight="400" fill="#aaa69c">One open-source workspace powered by Vertex AI.</text>
+    <text x="72" y="351" font-size="26" font-weight="400" fill="#aaa69c">One open-source workspace. Multiple creative APIs.</text>
 
     <g font-size="17" font-weight="600">
       <rect x="72" y="405" width="174" height="47" rx="23.5" fill="#1c1c1c" stroke="#353535"/>

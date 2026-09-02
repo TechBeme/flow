@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
     return {
         name: "Flow - AI Image and Video Studio",
         short_name: "Flow",
-        description: "Open-source AI image and video creation workspace powered by Vertex AI.",
+        description: "Open-source AI image and video creation workspace with multi-model generation through APIs.",
         start_url: "/",
         display: "standalone",
         background_color: "#0b0b0b",
