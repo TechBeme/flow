@@ -18,7 +18,7 @@
 </div>
 
 > [!IMPORTANT]
-> La URL de la demo pública está reservada en [flow.techbe.me](https://flow.techbe.me). Hasta que se anuncie su despliegue, ejecuta Flow localmente con la guía de este README.
+> La demo pública está disponible en [flow.techbe.me](https://flow.techbe.me). Permite explorar la interfaz, los proyectos, los controles de los modelos, la gestión de contenido y los idiomas. La generación de imágenes y videos está desactivada en la demo alojada porque las credenciales del proveedor no están configuradas. Los proyectos de la demo pública son compartidos, así que no subas contenido privado o sensible. Para activar la generación, despliega Flow con tus propias credenciales de API siguiendo esta guía.
 
 ![Espacio de generación de Flow con controles de modelo, proporción, duración, resolución y prompt](docs/images/generation-controls.png)
 

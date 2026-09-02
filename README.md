@@ -18,7 +18,7 @@
 </div>
 
 > [!IMPORTANT]
-> The public demo URL is reserved at [flow.techbe.me](https://flow.techbe.me). Until its deployment is announced, run Flow locally using the guide below.
+> The public demo is live at [flow.techbe.me](https://flow.techbe.me). It is available for exploring the interface, projects, model controls, media management, and language support. Image and video generation are disabled on the hosted demo because provider credentials are not configured. Public demo projects are shared, so do not upload private or sensitive content. To enable generation, deploy Flow with your own API credentials using the guide below.
 
 ![Flow generation workspace showing model, aspect ratio, duration, resolution, and prompt controls](docs/images/generation-controls.png)
 
@@ -59,7 +59,7 @@ Flow currently exposes these model choices in the UI. Availability, quota, suppo
 
 | Display name | Vertex AI model ID | Duration | Resolution |
 | --- | --- | --- | --- |
-| Omni 1.1 Flash | `gemini-omni-1.1-flash-preview` | 3–10 seconds | 360p, 720p, 1080p, 4K |
+| Omni 1.1 Flash | `gemini-omni-1.1-flash-preview` | 3 to 10 seconds | 360p, 720p, 1080p, 4K |
 | Veo 3.1 - Lite | `veo-3.1-lite-generate-001` | 4, 6, or 8 seconds | 720p, 1080p |
 | Veo 3.1 - Fast | `veo-3.1-fast-generate-001` | 4, 6, or 8 seconds | 720p, 1080p |
 | Veo 3.1 - Quality | `veo-3.1-generate-001` | 4, 6, or 8 seconds | 720p, 1080p, 4K |
