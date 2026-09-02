@@ -39,9 +39,9 @@ Most generative media tools separate image creation, video generation, reference
 | --- | --- |
 | ![Flow project dashboard](docs/images/dashboard.png) | ![Flow image and video workspace](docs/images/workspace.png) |
 
-| Generation controls | Mobile workspace |
-| --- | --- |
-| ![Flow model and output controls](docs/images/generation-controls.png) | <img src="docs/images/mobile-workspace.png" alt="Flow mobile workspace" width="360" /> |
+### Generation controls
+
+![Close-up of Flow model, aspect ratio, size, quantity, and prompt controls](docs/images/generation-controls.png)
 
 ## Supported models
 
@@ -76,7 +76,7 @@ For Veo, outputs above 720p use an 8-second duration because that is the constra
 - Asynchronous Omni and Veo operation polling
 - Project creation, rename, deletion, and visual thumbnails
 - Persistent PostgreSQL media and project library
-- Responsive desktop and mobile interface
+- Desktop-first creative interface
 - Media preview, zoom, download, delete, and prompt reuse
 - Portuguese product interface with English-first project documentation
 - Direct Vertex AI authentication, with no Google AI Studio API key required
@@ -196,20 +196,6 @@ See [Deployment](docs/DEPLOYMENT.md) and [Configuration](docs/CONFIGURATION.md) 
 - [Testing](docs/TESTING.md): current checks and manual verification
 - [Deployment](docs/DEPLOYMENT.md): Vercel and production considerations
 - [Security Policy](SECURITY.md): responsible vulnerability reporting
-
-## Roadmap
-
-- [ ] Authentication and private multi-user workspaces
-- [ ] Rate limiting, quotas, and cost controls
-- [ ] Cloud object storage for generated media
-- [ ] Background job queue with durable generation state
-- [ ] More Vertex AI models as they become generally available
-- [ ] Timeline and scene-building tools
-- [ ] Prompt presets and reusable style libraries
-- [ ] Internationalized interface
-- [ ] Automated unit, integration, and browser test suites
-
-Have an idea? [Open a feature request](https://github.com/TechBeme/flow/issues/new?template=feature_request.yml) or start a discussion after the repository launches.
 
 ## Contributing
 

@@ -39,9 +39,9 @@ O Flow reúne o ciclo criativo de geração de mídia em um único workspace vis
 | --- | --- |
 | ![Dashboard de projetos do Flow](docs/images/dashboard.png) | ![Workspace de imagens e vídeos do Flow](docs/images/workspace.png) |
 
-| Controles de geração | Workspace no celular |
-| --- | --- |
-| ![Controles de modelo e saída](docs/images/generation-controls.png) | <img src="docs/images/mobile-workspace.png" alt="Workspace móvel do Flow" width="360" /> |
+### Controles de geração
+
+![Detalhe dos controles de modelo, proporção, tamanho, quantidade e prompt do Flow](docs/images/generation-controls.png)
 
 ## Modelos disponíveis
 
@@ -74,7 +74,7 @@ No Veo, saídas acima de 720p usam duração de 8 segundos. Vídeos suportam `16
 - Acompanhamento assíncrono de gerações Omni e Veo
 - Projetos com nome, miniatura e galeria persistente
 - Preview, zoom, download, exclusão e reutilização de prompt
-- Interface responsiva para desktop e celular
+- Interface criativa focada em desktop
 - Integração direta com Vertex AI, sem chave do Google AI Studio
 
 ## Stack
@@ -151,18 +151,6 @@ Veja [Deployment](docs/DEPLOYMENT.md) para os cuidados de produção.
 - [Testes](docs/TESTING.md)
 - [Deploy](docs/DEPLOYMENT.md)
 - [Política de segurança](SECURITY.md)
-
-## Roadmap
-
-- [ ] Autenticação e workspaces privados para múltiplos usuários
-- [ ] Rate limiting, cotas e controle de custos
-- [ ] Object storage para mídias geradas
-- [ ] Fila de tarefas e estado durável de geração
-- [ ] Mais modelos do Vertex AI
-- [ ] Timeline e ferramentas para construir cenas
-- [ ] Presets de prompt e bibliotecas de estilo
-- [ ] Interface internacionalizada
-- [ ] Testes unitários, de integração e navegador
 
 ## Contribuindo
 

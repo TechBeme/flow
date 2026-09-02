@@ -1,6 +1,6 @@
 # Testing
 
-Flow currently uses static quality gates and manual end-to-end verification. An automated unit and browser test suite is on the roadmap.
+Flow currently uses static quality gates and manual end-to-end verification. There is no automated unit or browser test suite.
 
 ## Automated checks
 
@@ -22,7 +22,7 @@ The production build does not require live database or Vertex AI credentials. Th
 4. Generate one image with a model available to your project.
 5. Generate one video, wait for polling to finish, play it, and download it.
 6. Reuse a prompt and verify the reference image is restored.
-7. Check the project on a desktop viewport and a narrow mobile viewport.
+7. Check the project on its desktop target viewport.
 8. Confirm failed upstream requests show a useful message and do not remain stuck in a generating state.
 
 ## Integration truth

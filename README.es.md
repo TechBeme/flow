@@ -39,9 +39,9 @@ La mayoría de las herramientas de medios generativos separan la creación de im
 | --- | --- |
 | ![Panel de proyectos de Flow](docs/images/dashboard.png) | ![Espacio de imágenes y videos de Flow](docs/images/workspace.png) |
 
-| Controles de generación | Experiencia móvil |
-| --- | --- |
-| ![Controles de modelos y salida](docs/images/generation-controls.png) | <img src="docs/images/mobile-workspace.png" alt="Espacio móvil de Flow" width="360" /> |
+### Controles de generación
+
+![Detalle de los controles de modelo, proporción, tamaño, cantidad y prompt de Flow](docs/images/generation-controls.png)
 
 ## Modelos disponibles
 
@@ -76,7 +76,7 @@ En Veo, las salidas superiores a 720p utilizan una duración de 8 segundos, de a
 - Seguimiento asíncrono de operaciones de Omni y Veo
 - Creación, renombrado, eliminación y miniaturas visuales de proyectos
 - Biblioteca persistente de proyectos y medios en PostgreSQL
-- Interfaz responsive para escritorio y móvil
+- Interfaz creativa enfocada en escritorio
 - Vista previa, zoom, descarga, eliminación y reutilización de prompts
 - Interfaz de producto en portugués y documentación en tres idiomas
 - Autenticación directa con la Vertex AI API, sin clave de Google AI Studio
@@ -195,18 +195,6 @@ Consulta [Despliegue](docs/DEPLOYMENT.md) y [Configuración](docs/CONFIGURATION.
 - [Pruebas](docs/TESTING.md)
 - [Despliegue](docs/DEPLOYMENT.md)
 - [Política de seguridad](SECURITY.md)
-
-## Roadmap
-
-- [ ] Autenticación y espacios privados para múltiples usuarios
-- [ ] Rate limiting, cuotas y control de costes
-- [ ] Almacenamiento de objetos para medios generados
-- [ ] Cola de trabajos con estado de generación duradero
-- [ ] Más modelos disponibles mediante APIs
-- [ ] Timeline y herramientas de construcción de escenas
-- [ ] Presets de prompts y bibliotecas de estilos
-- [ ] Interfaz internacionalizada
-- [ ] Pruebas unitarias, de integración y de navegador
 
 ## Contribuir
 

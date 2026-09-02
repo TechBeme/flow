@@ -36,7 +36,7 @@ Never upload `vertex.json` to the repository or add its contents to `next.config
 - [ ] Verify serverless request/response and execution-duration limits against target video sizes.
 - [ ] Remove secrets from logs and error tracking.
 - [ ] Validate image generation and every enabled video model with the deployed environment.
-- [ ] Verify mobile and desktop rendering.
+- [ ] Verify rendering on the desktop target viewport.
 - [ ] Confirm the custom domain, canonical URL, Open Graph image, robots file, and sitemap.
 
 ## Important limits
